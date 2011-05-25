@@ -1,10 +1,5 @@
-Automation Basics
-=================
-
----
-
-Unix Automation Skills
-======================
+Basic Unix Automation Skills (SH+SSH)
+=====================================
 
 Really Simple. You come a very long way with basic commands:
 
@@ -67,12 +62,6 @@ Change password:
     !sh
     ∴ ➜ ssh-keygen -p
 
-Your public key:
-
-    !sh
-    ∴ ➜ cat ~/.ssh/id_rsa.pub
-    ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAmZW ... ium5OQ== oc@snappy
-
 ---
 
 Authorized Keys
@@ -83,6 +72,16 @@ Authorized Keys
     !sh
     ∴ ➜ echo "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAmZW ... ium5OQ== oc@snappy" >> ~/.ssh/authorized_keys
 
+Your public key:
+
+    !sh
+    ∴ ➜ cat ~/.ssh/id_rsa.pub
+    ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAmZW ... ium5OQ== oc@snappy
+
+---
+
+Authorized Keys (cont.)
+=======================
 
 If you password protect your keys (as you should), use the ssh-agent to keep the authentication information in memory (so you do not have to retype your password)
 
@@ -134,6 +133,25 @@ Common options (commands):
 * force-reload
 * status
 
+
+---
+
+run-levels
+==========
+
+0. System halt
+1. Single-user mode
+2. Multiuser, without NFS
+3. Complete multiuser mode
+4. User defined
+5. X11 (XDM login)
+6. Reboot
+
+---
+
+Enabling Scripts
+================
+
 You enable init scripts by adding a runlevel, start and stop priorities in your init-script.
 
     !sh
@@ -142,11 +160,13 @@ You enable init scripts by adding a runlevel, start and stop priorities in your 
 You enable it (to run on 2345, etc) with chkconfig (update-rc.d on Debian).
 
     !sh
-    chkconfig mynewapplication on
+    chkconfig puppet on
 
+    !sh
+    chkconfig --list | grep puppet
+    puppet         	0:off	1:off	2:on	3:on	4:on	5:on	6:off
 
 ---
-
 
 
 
